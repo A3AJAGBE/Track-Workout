@@ -31,6 +31,10 @@ time = current_datetime.strftime("%X")
 
 SHEETY_ENDPOINT = os.environ.get('SHEETY_ENDPOINT')
 
+SHEETY_HEADERS = {
+    "Authorization": os.environ.get('SHEETY_AUTH')
+}
+
 # Add the data into google sheets using sheety api endpoint
 for exercise in exercise_data['exercises']:
     sheety_inputs = {
@@ -43,7 +47,7 @@ for exercise in exercise_data['exercises']:
         }
     }
 
-    sheety_response = requests.post(SHEETY_ENDPOINT, json=sheety_inputs)
+    sheety_response = requests.post(SHEETY_ENDPOINT, json=sheety_inputs, headers=SHEETY_HEADERS)
 
     print(sheety_response.text)
 
