@@ -1,6 +1,7 @@
 import requests
 import os
 from datetime import datetime
+from logo import logo
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -11,6 +12,7 @@ HEADERS = {
     "x-app-key": os.environ.get('API_KEY'),
 }
 
+print(logo)
 exercise_info = input("What exercise(s) did you complete: ")
 
 PARAMETERS = {
